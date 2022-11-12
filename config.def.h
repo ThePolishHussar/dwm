@@ -1,5 +1,4 @@
 /* See LICENSE file for copyright and license details. */
-#include "movestack.c"
 #include <X11/XF86keysym.h>
 
 /* appearance */
