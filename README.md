@@ -13,6 +13,7 @@ Based on release 6.4
 * Better floating windows with [resizecorners](), [savefloats](), [togglefloatingcenter](), [moveresize](). 
 * A better multi-head experience with [sendmoncenter](), [statusallmons](), 
 * A dwm.desktop entry for use with login managers
+* A simpler bar - only shows Tags and status, only removing lines from base, no patches.
 
 ## Depedencies
 
