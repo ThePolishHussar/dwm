@@ -134,10 +134,10 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,		XK_j,		inplacerotate,	{.i = +2} },
 	{ MODKEY|ControlMask,		XK_k,		inplacerotate,	{.i = -2} },
 	// floating window movement
-	{ MODKEY|ShiftMask,		XK_Down,	moveresize,	{.v = "-25x 0y 0w 0h" } },
-	{ MODKEY|ShiftMask,		XK_Up,		moveresize,	{.v = "0x 25y 0w 0h" } },
-	{ MODKEY|ShiftMask,		XK_Right,	moveresize,	{.v = "0x -25y 0w 0h" } },
-	{ MODKEY|ShiftMask,		XK_Left,	moveresize,	{.v = "25x 0y 0w 0h" } },
+	{ MODKEY|ShiftMask,		XK_Left,	moveresize,	{.v = "-25x 0y 0w 0h" } },
+	{ MODKEY|ShiftMask,		XK_Down,	moveresize,	{.v = "0x 25y 0w 0h" } },
+	{ MODKEY|ShiftMask,		XK_Up,		moveresize,	{.v = "0x -25y 0w 0h" } },
+	{ MODKEY|ShiftMask,		XK_Right,	moveresize,	{.v = "25x 0y 0w 0h" } },
 	// floating window resize
 	{ MODKEY|ControlMask,		XK_Down,	moveresize,	{.v = "0x 0y 0w 25h" } },
 	{ MODKEY|ControlMask,		XK_Up,		moveresize,	{.v = "0x 0y 0w -25h" } },
