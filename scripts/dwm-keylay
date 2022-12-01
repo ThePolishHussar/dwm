@@ -1,0 +1,16 @@
+#!/bin/sh
+# Quickly switch to requested layout
+CACHE="$XDG_CACHE_HOME/dwm"
+
+[ -d "$CACHE" ] || mkdir -p "$CACHE"
+[ -e "$CACHE/keylays-hist" ] || echo 'us' >> "$CACHE/keylays-hist"
+
+LAYOUT=$( printf '%s\n' $(cat "$CACHE/keylays-hist") | dmenu "$@" )
+if echo $LAYOUT | grep -qE '^-'; then
+	LAYOUT=$(echo $LAYOUT | sed 's/^-//')
+	sed -i "/$LAYOUT/d" "$CACHE/keylays-hist"
+else 
+	setxkbmap -layout $LAYOUT && grep -qv "$LAYOUT" "$CACHE/keylays-hist" && echo "$LAYOUT" >> "$CACHE/keylays-hist"
+fi
+
+kill -41 "$( pidof dwmblocks )"
