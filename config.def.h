@@ -113,6 +113,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_r,		spawn,		{.v = rebootcmd} },
 	{ MODKEY|ShiftMask,		XK_s,		spawn,		{.v = shutdowncmd} },
 	{ MODKEY|ShiftMask,             XK_q,      	quit,           {0} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,		quit,		{1} }, 
 	// volume control
 	{ 0,		XF86XK_AudioLowerVolume, 	spawn, 	   	SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
 	{ 0,			XF86XK_AudioMute, 	spawn, 	   	SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
