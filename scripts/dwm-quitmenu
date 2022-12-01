@@ -1,0 +1,11 @@
+#!/bin/sh
+ACTION="$( echo "shutdown\nsleep\nreboot\nlock\nlog out\nrestart dwm" | dmenu )"
+case $ACTION in
+	'shutdown') sudo shutdown now;;
+	'sleep') slock & systemctl suspend;;
+	'reboot') sudo reboot;;
+	'lock') slock;;
+	'log out') kill -TERM "$(pidof dwm)";;
+	'restart dwm') kill -HUP "$(pidof dwm)";;
+	*) echo error;;
+esac

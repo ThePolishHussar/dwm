@@ -79,8 +79,10 @@ static const Layout layouts[] = {
 static const char *termcmd[]  = { "st", NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *passcmd[]  = { "passmenu", NULL };
-static const char *shutdowncmd[] = { "shutdown-confirm", "+0", NULL };
-static const char *rebootcmd[] = { "reboot-confirm", NULL };
+
+static const char *quitmenu[] = { "dwm-quitmenu", NULL };
+static const char *tdualmon[] = { "dwm-tdualmon", NULL };
+static const char *keylay[] = { "dwm-keylay", NULL };
 
 /* Xresources preferences to load at startup */
 ResourcePref resources[] = {
@@ -105,15 +107,13 @@ ResourcePref resources[] = {
 };
 
 static const Key keys[] = {
-	// spawn programs
+	// spawn programs and scripts
 	{ MODKEY,			XK_d,		spawn,		{.v = dmenucmd } },
 	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
 	{ MODKEY,			XK_p,		spawn,		{.v = passcmd } },
-	// power / xsession managment
-	{ MODKEY|ShiftMask,		XK_r,		spawn,		{.v = rebootcmd} },
-	{ MODKEY|ShiftMask,		XK_s,		spawn,		{.v = shutdowncmd} },
-	{ MODKEY|ShiftMask,             XK_q,      	quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,		quit,		{1} }, 
+	{ MODKEY|ShiftMask,             XK_q,      	spawn,		{.v = quitmenu } },
+	{ MODKEY,			XK_m,		spawn,		{.v = tdualmon } },
+	{ MODKEY,			XK_z,		spawn,		{.v = keylay } },
 	// volume control
 	{ 0,		XF86XK_AudioLowerVolume, 	spawn, 	   	SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
 	{ 0,			XF86XK_AudioMute, 	spawn, 	   	SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },

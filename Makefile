@@ -38,8 +38,16 @@ dist: clean
 
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
-	cp -f dwm ${DESTDIR}${PREFIX}/bin
-	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
+	cp -f	dwm \
+		scripts/dwm-quitmenu\
+		scripts/dwm-keylay\
+		scripts/dwm-tdualmon\
+		${DESTDIR}${PREFIX}/bin
+	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm\
+		${DESTDIR}${PREFIX}/bin/dwm-quitmenu\
+		${DESTDIR}${PREFIX}/bin/dwm-keylay\
+		${DESTDIR}${PREFIX}/bin/dwm-tdualmon
+
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
@@ -48,6 +56,9 @@ install: all
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
+		${DESTDIR}${PREFIX}/bin/dwm-quitmenu\
+		${DESTDIR}${PREFIX}/bin/dwm-keylay\
+		${DESTDIR}${PREFIX}/bin/dwm-tdualmon\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1\
 		${DESTDIR}${MANPREFIX}/share/xsession/dwm.desktop	
 
