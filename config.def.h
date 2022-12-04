@@ -55,14 +55,6 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 };
 
-/* commands */
-static const char *passcmd[]  = { "passmenu", NULL };
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char *keylay[] = { "dwm-keylay", NULL };
-static const char *tdualmon[] = { "dwm-tdualmon", NULL };
-static const char *quitmenu[] = { "dwm-quitmenu", NULL };
-
 /* key definitions */
 #define MODKEY Mod4Mask
 #define ALTMOD Mod1Mask
@@ -74,8 +66,16 @@ static const char *quitmenu[] = { "dwm-quitmenu", NULL };
   	{ MODKEY|Mod1Mask,		KEY,      swaptags,       {.ui = 1 << TAG} },
 #define STATUSBAR "dwmblocks"
 
-// helper for spawning shell commands in the pre dwm-5.0 fashion
+/* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+
+/* commands */
+static const char *termcmd[]  = { "st", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *passcmd[]  = { "passmenu", NULL };
+static const char *quitmenu[] = { "dwm-quitmenu", NULL };
+static const char *tdualmon[] = { "dwm-tdualmon", NULL };
+static const char *keylay[] = { "dwm-keylay", NULL };
 
 /* keybinds */
 #include <X11/XF86keysym.h>
