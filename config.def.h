@@ -80,9 +80,9 @@ static const char *keylay[] = { "dwm-keylay", NULL };
 /* keybinds */
 #include <X11/XF86keysym.h>
 static const Key keys[] = {
-	{ 0,		XF86XK_AudioLowerVolume, 	spawn, 	   	SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof STATUSBAR)") },
-	{ 0,			XF86XK_AudioMute, 	spawn, 	   	SHCMD("pamixer -t; kill -44 $(pidof STATUSBAR)") },
-	{ 0,		XF86XK_AudioRaiseVolume, 	spawn, 	   	SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof STATUSBAR)") },
+	{ 0,			XF86XK_AudioMute, 	spawn, 	   	SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	{ 0,		XF86XK_AudioLowerVolume, 	spawn, 	   	SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
+	{ 0,		XF86XK_AudioRaiseVolume, 	spawn, 	   	SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
 	{ 0,		XF86XK_MonBrightnessUp,		spawn,		SHCMD("brightnessctl set 5%+; kill -45 $(pidof dwmblocks)") },
 	{ 0,		XF86XK_MonBrightnessDown,	spawn,		SHCMD("brightnessctl set 5%-; kill -45 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_q,		killclient,	{0} },
