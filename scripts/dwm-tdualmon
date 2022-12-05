@@ -1,9 +1,21 @@
 #!/bin/sh
-# toggle left mon on and off
-if xrandr --listactivemonitors | grep -q HDMI-0; then
-	xrandr --output HDMI-0 --off
+# toggle non-primary monitors
+MON="$(xrandr | grep -v primary | awk '/ connected/ {print $1}')"
+[ -z "$MON" ] && exit
+[ "$(echo $MON | wc -l )" -gt 1 ] && MON=$(echo $MON | dmenu)
+
+if xrandr --listactivemonitors | grep -q "$MON"; then
+	xrandr --output "$MON" --off
 else
-	xrandr --output HDMI-0 --mode 1366x768 --left-of DP-0
+	ACTIVE_MONS=$(xrandr --listactivemonitors | awk '! /Monitors/ {print $NF}')
+	POS_OF="$(echo "left-of\nright-of\nabove\nbelow" | dmenu )"
+
+	[ -z "$POS_OF" ] && exit
+	[ "$POS_OF" != 'auto' ] && [ "$( echo $ACTIVE_MONS | wc -l)" -gt 1 ] && POS_REL="$( echo $ACTIVE_MONS | dmenu )"
+	[ "$( echo $ACTIVE_MONS | wc -l)" = 1 ] && POS_REL="$ACTIVE_MONS"
+	[ "$POS_OF" != 'auto' ] && [ -z "$POS_REL" ] && exit 
+
+	xrandr --output "$MON" --auto --"$POS_OF" "$POS_REL"
 fi
 
-xwallpaper --zoom .config/wall
+xwallpaper --zoom ~/.config/wall
