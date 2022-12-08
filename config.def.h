@@ -69,15 +69,10 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-/* commands */
-static const char *termcmd[]  = { "st", NULL };
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *passcmd[]  = { "passmenu", NULL };
-static const char *quitmenu[] = { "dwm-quitmenu", NULL };
-static const char *tdualmon[] = { "dwm-tdualmon", NULL };
-static const char *keylay[] = { "dwm-keylay", NULL };
 
 /* keybinds */
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+
 #include <X11/XF86keysym.h>
 static const Key keys[] = {
 	{ 0,			XF86XK_AudioMute, 	spawn, 	   	SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
@@ -86,7 +81,7 @@ static const Key keys[] = {
 	{ 0,		XF86XK_MonBrightnessUp,		spawn,		SHCMD("brightnessctl set 5%+; kill -45 $(pidof dwmblocks)") },
 	{ 0,		XF86XK_MonBrightnessDown,	spawn,		SHCMD("brightnessctl set 5%-; kill -45 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_q,		killclient,	{0} },
-	{ MODKEY,			XK_p,		spawn,		{.v = passcmd } },
+	{ MODKEY,			XK_p,		spawn,		{.v = (const char*[]){ "dmenu-passmenu", NULL } } },
 	{ MODKEY,			XK_a,		incnmaster,	{.i = +1 } },
 	{ MODKEY,			XK_s,		incnmaster,     {.i = -1 } },
 	{ MODKEY,			XK_d,		spawn,		{.v = dmenucmd } },
@@ -95,10 +90,11 @@ static const Key keys[] = {
 	{ MODKEY,			XK_j,		focusstack,	{.i = +1 } },
 	{ MODKEY,			XK_k,		focusstack,	{.i = -1 } },
 	{ MODKEY,			XK_l,		focusmon,	{.i = +1 } },
-	{ MODKEY,			XK_Return,	spawn,		{.v = termcmd } },
-	{ MODKEY,			XK_z,		spawn,		{.v = keylay } },
-	{ MODKEY,			XK_m,		spawn,		{.v = tdualmon } },
-	{ MODKEY|ShiftMask,             XK_q,      	spawn,		{.v = quitmenu } },
+	{ MODKEY,			XK_Return,	spawn,		{.v = (const char *[]){ "st", NULL } } },
+	{ MODKEY,			XK_z,		spawn,		{.v = (const char *[]){ "dwm-keylay", NULL } } },
+	{ MODKEY,			XK_b,		spawn,		{.v = (const char *[]){ "dmenu-bluetooth", NULL } } },
+	{ MODKEY,			XK_m,		spawn,		{.v = (const char *[]){ "dwm-tdualmon", NULL } } },
+	{ MODKEY|ShiftMask,             XK_q,      	spawn,		{.v = (const char *[]){ "dwm-quitmenu", NULL } } },
 	{ MODKEY|ShiftMask,		XK_u,		moveresize,	{.v = "-25x 0y 0w 0h" } },
 	{ MODKEY|ShiftMask,		XK_i,		moveresize,	{.v = "0x 25y 0w 0h" } },
 	{ MODKEY|ShiftMask,		XK_o,		moveresize,	{.v = "0x -25y 0w 0h" } },
