@@ -71,8 +71,6 @@ static const Layout layouts[] = {
 
 
 /* keybinds */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-
 #include <X11/XF86keysym.h>
 static const Key keys[] = {
 	{ 0,			XF86XK_AudioMute, 	spawn, 	   	SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
@@ -82,10 +80,12 @@ static const Key keys[] = {
 	{ 0,		XF86XK_MonBrightnessDown,	spawn,		SHCMD("brightnessctl set 5%-; kill -45 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY,			XK_w,		spawn,		{.v = (const char *[]){ "dmenu-wifi", NULL } } },
+	{ MODKEY,			XK_i,		spawn,		{.v = (const char *[]){ "firefox", NULL } } },
+	{ MODKEY,			XK_o,		spawn,		{.v = (const char*[]){ "st", "-e", "lf",  NULL } } },
 	{ MODKEY,			XK_p,		spawn,		{.v = (const char*[]){ "dmenu-passmenu", NULL } } },
 	{ MODKEY,			XK_a,		incnmaster,	{.i = +1 } },
 	{ MODKEY,			XK_s,		incnmaster,     {.i = -1 } },
-	{ MODKEY,			XK_d,		spawn,		{.v = dmenucmd } },
+	{ MODKEY,			XK_d,		spawn,		{.v = (const char*[]){ "dmenu_run", NULL } } },
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
 	{ MODKEY,			XK_h,		focusmon,	{.i = -1 } },
 	{ MODKEY,			XK_j,		focusstack,	{.i = +1 } },
@@ -94,7 +94,8 @@ static const Key keys[] = {
 	{ MODKEY,			XK_Return,	spawn,		{.v = (const char *[]){ "st", NULL } } },
 	{ MODKEY,			XK_z,		spawn,		{.v = (const char *[]){ "dwm-keylay", NULL } } },
 	{ MODKEY,			XK_b,		spawn,		{.v = (const char *[]){ "dmenu-bluetooth", NULL } } },
-	{ MODKEY,			XK_m,		spawn,		{.v = (const char *[]){ "dwm-tdualmon", NULL } } },
+	{ MODKEY,			XK_m,		spawn,		{.v = (const char *[]){ "thunderbird" , NULL } } },
+	{ MODKEY,			XK_n,		spawn,		{.v = (const char*[]){ "st", "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
 	{ MODKEY|ShiftMask,             XK_q,      	spawn,		{.v = (const char *[]){ "dwm-quitmenu", NULL } } },
 	{ MODKEY|ShiftMask,		XK_u,		moveresize,	{.v = "-25x 0y 0w 0h" } },
 	{ MODKEY|ShiftMask,		XK_i,		moveresize,	{.v = "0x 25y 0w 0h" } },
@@ -105,6 +106,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_k,		movestack,	{.i = -1 } },
 	{ MODKEY|ShiftMask,		XK_l,		tagmon,		{.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_Return,	zoom,		{0} },
+	{ MODKEY|ShiftMask,		XK_m,		spawn,		{.v = (const char *[]){ "dwm-monmenu", NULL } } },
 	{ MODKEY|ShiftMask,		XK_space,	togglefloating,	{0} },
 	{ MODKEY|ControlMask,		XK_u,		moveresize,	{.v = "0x 0y 0w 25h" } },
 	{ MODKEY|ControlMask,		XK_i,		moveresize,	{.v = "0x 0y 0w -25h" } },
