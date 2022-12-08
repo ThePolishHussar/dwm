@@ -81,6 +81,7 @@ static const Key keys[] = {
 	{ 0,		XF86XK_MonBrightnessUp,		spawn,		SHCMD("brightnessctl set 5%+; kill -45 $(pidof dwmblocks)") },
 	{ 0,		XF86XK_MonBrightnessDown,	spawn,		SHCMD("brightnessctl set 5%-; kill -45 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_q,		killclient,	{0} },
+	{ MODKEY,			XK_w,		spawn,		{.v = (const char *[]){ "dmenu-wifi", NULL } } },
 	{ MODKEY,			XK_p,		spawn,		{.v = (const char*[]){ "dmenu-passmenu", NULL } } },
 	{ MODKEY,			XK_a,		incnmaster,	{.i = +1 } },
 	{ MODKEY,			XK_s,		incnmaster,     {.i = -1 } },
