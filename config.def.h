@@ -13,7 +13,6 @@ static const unsigned int borderalpha 	= OPAQUE;
 static char normbgcolor[]		= "#282828";
 static char normbordercolor[]		= "#282828";
 static char normfgcolor[]		= "#ebdbb2";
-static char dmenufont[]       		= "Hack Nerd Font:size=12";
 static unsigned int gappx 		= 5;		/* gaps between windows */
 static unsigned int borderpx  		= 1;		/* border pixel of windows */
 static float mfact     			= 0.5; 		/* factor of master area size [0.05..0.95] */
