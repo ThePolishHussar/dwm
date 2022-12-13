@@ -873,26 +873,24 @@ drawbar(Monitor *m)
 		return;
 
 	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon || 1) { /* status is drawn on all monitors */
-		char *text, *s, ch;
-		drw_setscheme(drw, scheme[SchemeNorm]);
+	char *text, *s, ch;
+	drw_setscheme(drw, scheme[SchemeNorm]);
 
-		x = 0;
-		for (text = s = stext; *s; s++) {
-			if ((unsigned char)(*s) < ' ') {
-				ch = *s;
-				*s = '\0';
-				tw = TEXTW(text) - lrpad;
-				drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
-				x += tw;
-				*s = ch;
-				text = s + 1;
-			}
+	x = 0;
+	for (text = s = stext; *s; s++) {
+		if ((unsigned char)(*s) < ' ') {
+			ch = *s;
+			*s = '\0';
+			tw = TEXTW(text) - lrpad;
+			drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
+			x += tw;
+			*s = ch;
+			text = s + 1;
 		}
-		tw = TEXTW(text) - lrpad + 2;
-		drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
-		tw = statusw;
 	}
+	tw = TEXTW(text) - lrpad + 2;
+	drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
+	tw = statusw;
 
 	for (c = m->clients; c; c = c->next) {
 		occ |= c->tags;
