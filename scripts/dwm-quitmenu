@@ -1,6 +1,7 @@
 #!/bin/sh
-ACTION="$( echo "shutdown\nsleep\nreboot\nlock\nlog out\nrestart dwm" | dmenu )"
+ACTION="$( echo "hibernate\nshutdown\nsleep\nreboot\nlock\nlog out\nrestart dwm" | dmenu )"
 case $ACTION in
+	'hibernate') slock & systemctl hibernate;;
 	'shutdown') sudo shutdown now;;
 	'sleep') slock & systemctl suspend;;
 	'reboot') sudo reboot;;
