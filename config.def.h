@@ -100,6 +100,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_l,		focusmon,	{.i = +1 } },
 	{ MODKEY,			XK_Return,	spawn,		{.v = (const char *[]){ "st", NULL } } },
 	{ MODKEY,			XK_z,		spawn,		{.v = (const char *[]){ "dwm-keylay", NULL } } },
+	{ MODKEY,			XK_v,		spawn,		{.v = (const char *[]){ "st", "-c", "floating", "-e", "pulsemixer", NULL } } },
 	{ MODKEY,			XK_b,		spawn,		{.v = (const char *[]){ "dmenu-bluetooth", NULL } } },
 	{ MODKEY,			XK_m,		spawn,		{.v = (const char *[]){ "thunderbird" , NULL } } },
 	{ MODKEY,			XK_n,		spawn,		{.v = (const char*[]){ "st", "-e", "nvim", NULL } } },
