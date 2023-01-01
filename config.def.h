@@ -79,12 +79,14 @@ static const Layout layouts[] = {
 
 /* keybinds */
 #include <X11/XF86keysym.h>
+#define XF86XK_PrtScr 0x0000ff61
 static const Key keys[] = {
 	{ 0,			XF86XK_AudioMute, 	spawn, 	   	SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ 0,		XF86XK_AudioLowerVolume, 	spawn, 	   	SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
 	{ 0,		XF86XK_AudioRaiseVolume, 	spawn, 	   	SHCMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
 	{ 0,		XF86XK_MonBrightnessUp,		spawn,		SHCMD("brightnessctl set 5%+; kill -45 $(pidof dwmblocks)") },
 	{ 0,		XF86XK_MonBrightnessDown,	spawn,		SHCMD("brightnessctl set 5%-; kill -45 $(pidof dwmblocks)") },
+	{ 0, 				XF86XK_PrtScr,	spawn,		SHCMD("scrot -F \"$HOME/pics/screenshots/%Y-%m-%d-%H-%M-%S.png\" ") },
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY,			XK_w,		spawn,		{.v = (const char *[]){ "dmenu-wifi", NULL } } },
 	{ MODKEY,			XK_i,		spawn,		{.v = (const char *[]){ "firefox", NULL } } },
