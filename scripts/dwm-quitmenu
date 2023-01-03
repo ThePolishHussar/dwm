@@ -1,13 +1,13 @@
 #!/bin/sh
 ACTION="$( echo "hibernate\nshutdown\nsleep\nreboot\nlock\nlog out\nrestart dwm" | dmenu )"
 case $ACTION in
-	'hibernate') sleep 1
+	'hibernate') sleep 0.3
 		slock & systemctl hibernate;;
 	'shutdown') sudo shutdown now;;
-	'sleep') sleep 1
+	'sleep') sleep 0.3
 		slock & systemctl suspend;;
 	'reboot') sudo reboot;;
-	'lock') sleep 1
+	'lock') sleep 0.3
 		slock;;
 	'log out') kill -TERM "$(pidof dwm)";;
 	'restart dwm') kill -HUP "$(pidof dwm)";;
