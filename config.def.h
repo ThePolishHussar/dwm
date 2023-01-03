@@ -54,7 +54,6 @@ static const Rule rules[] = {
 };
 
 /* layouts */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
