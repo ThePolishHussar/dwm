@@ -3080,6 +3080,9 @@ inplacerotate(const Arg *arg)
 
 void
 movestack(const Arg *arg) {
+	if (selmon->sel && selmon->sel->isfullscreen)
+		return;
+
 	Client *c = NULL, *p = NULL, *pc = NULL, *i;
 
 	if(arg->i > 0) {
