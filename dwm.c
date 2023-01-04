@@ -3063,15 +3063,19 @@ inplacerotate(const Arg *arg)
 	if (arg->i == -1 && selidx < selmon->nmaster)  insertclient(mtail, mhead, 1);
 	if (arg->i == 1 && selidx < selmon->nmaster)  insertclient(mhead, mtail, 0);
 
-	// Restore focus position
-	i = 0;
-	for (c = selmon->clients; c; c = c->next) {
-		if (!ISVISIBLE(c) || (c->isfloating)) continue;
-		if (i == selidx) { focus(c); break; }
-		i++;
+	// Restore focus position if not in fullscreen mode
+	if (selmon->sel && selmon->sel->isfullscreen) {
+		arrange(selmon);
+	} else {
+		i = 0;
+		for (c = selmon->clients; c; c = c->next) {
+			if (!ISVISIBLE(c) || (c->isfloating)) continue;
+			if (i == selidx) { focus(c); break; }
+			i++;
+		arrange(selmon);
+		focus(c);
+		}
 	}
-	arrange(selmon);
-	focus(c);
 }
 
 void
