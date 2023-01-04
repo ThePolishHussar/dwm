@@ -11,6 +11,7 @@ LAYOUT=$( printf '%s\n' $(cat "$CACHE/keylays-hist") | dmenu "$@" )
 if echo $LAYOUT | grep -qE '^-'; then
 	LAYOUT=$(echo $LAYOUT | sed 's/^-//')
 	sed -i "/$LAYOUT/d" "$CACHE/keylays-hist"
+	[ "$( setxkbmap -query | awk '/layout:/ {print $NF}' )" = "$LAYOUT" ] && setxkbmap -layout $( head -n 1 "$CACHE/keylays-hist" || echo us )
 else 
 	setxkbmap -layout $LAYOUT && addentry
 fi
