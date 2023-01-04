@@ -2,10 +2,10 @@
 ACTION="$( echo "hibernate\nshutdown\nsleep\nreboot\nlock\nlog out\nrestart dwm" | dmenu )"
 case $ACTION in
 	'hibernate') sleep 0.3
-		slock & systemctl hibernate;;
+		slock & sudo systemctl hibernate;;
 	'shutdown') sudo shutdown now;;
 	'sleep') sleep 0.3
-		slock & systemctl suspend;;
+		slock & sudo systemctl suspend;;
 	'reboot') sudo reboot;;
 	'lock') sleep 0.3
 		slock;;
