@@ -163,7 +163,7 @@ static const Button buttons[] = {
 ResourcePref resources[] = {
 		{ "showbar",		INTEGER, &showbar },
 		{ "topbar",		INTEGER, &topbar },
-		{ "barheight",		INTEGER, &user_bh },
+		{ "lineheight",		INTEGER, &user_bh },
 		{ "font",		STRING,  &font },
 		{ "selbackground",	STRING,  &selbgcolor },
 		{ "selbordercolor",	STRING,  &selbordercolor },
